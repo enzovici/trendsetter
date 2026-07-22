@@ -1,0 +1,25 @@
+# All polling/detection knobs. Budget tuning happens here, never in code.
+budget:
+  monthly_cap_usd: 100.0
+  soft_cap_ratio: 0.8
+  # When soft cap is hit, every interval below is multiplied by this factor.
+  soft_cap_interval_multiplier: 2.0
+
+cadence_minutes:
+  trending_tiktok: 60
+  trending_instagram: 60
+  watchlist_hot: 30
+  watchlist_standard: 180
+  watchlist_slow: 360
+  own_insights: 360
+  aggregate_buckets: 15
+  score_bursts: 15
+  embed_and_cluster: 60
+
+cron:
+  recompute_baselines: "0 4 * * *"
+  refresh_tokens: "30 4 * * *"
+
+limits:
+  posts_per_hashtag_pull: 50
+  hot_watchlist_max_entities: 20

@@ -1,0 +1,38 @@
+# Provider cost tables + capability routing.
+# Order in routes = fallback order (first adapter that succeeds wins).
+# Costs are estimates used by the budget ledger; verify against vendor
+# dashboards and correct here — never hardcode costs in adapters.
+
+providers:
+  scrapecreators:
+    kind: scraper
+    base_url: https://api.scrapecreators.com
+    # $47 tier assumption pending verification of per-endpoint credits.
+    cost_per_call_usd: 0.001
+  apify:
+    kind: scraper
+    base_url: https://api.apify.com
+    cost_per_item_usd:
+      tiktok: 0.0003
+      instagram: 0.0027
+  instagram_graph:
+    kind: official
+    cost_per_call_usd: 0.0
+  tiktok_display:
+    kind: official
+    cost_per_call_usd: 0.0
+  tiktok_discovery:
+    kind: official
+    cost_per_call_usd: 0.0
+    enabled: false   # open-beta access not granted yet
+
+routes:
+  tiktok:
+    trending_feed: [scrapecreators]
+    hashtag_posts: [scrapecreators, apify]
+    profile_posts: [scrapecreators, apify]
+    own_insights: [tiktok_display]
+  instagram:
+    hashtag_posts: [scrapecreators, apify]
+    profile_posts: [scrapecreators, apify]
+    own_insights: [instagram_graph]

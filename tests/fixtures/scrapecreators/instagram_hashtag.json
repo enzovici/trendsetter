@@ -1,0 +1,36 @@
+{
+  "posts": [
+    {
+      "pk": "3401111111111111111",
+      "caption": "Progress not perfection #fitness #gymlife",
+      "owner": {"id": "890111111", "username": "liftlife.ig"},
+      "like_count": 15400,
+      "comment_count": 320,
+      "taken_at": 1752948000,
+      "permalink": "https://www.instagram.com/p/DAbCdEfGh1a/",
+      "hashtags": ["fitness", "gymlife"]
+    },
+    {
+      "pk": "3402222222222222222",
+      "caption": "Sunday reset workout #fitness #reels",
+      "owner": {"id": "890222222", "username": "marco.moves"},
+      "like_count": 8200,
+      "comment_count": 145,
+      "taken_at": 1752951600,
+      "permalink": "https://www.instagram.com/p/DAbCdEfGh2b/",
+      "hashtags": ["fitness", "reels"]
+    },
+    {
+      "pk": "3403333333333333333",
+      "caption": "Meal prep for the week #fitness #mealprep",
+      "owner": {"id": "890333333", "username": "gabi.gains"},
+      "like_count": 21700,
+      "comment_count": 510,
+      "taken_at": 1752955200,
+      "permalink": "https://www.instagram.com/p/DAbCdEfGh3c/",
+      "hashtags": ["fitness", "mealprep"]
+    }
+  ],
+  "cursor": "def",
+  "credits_used": 1
+}

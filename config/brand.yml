@@ -1,0 +1,7 @@
+# v1 brand voice profile (moves to DB per-tenant when SaaS).
+name: My Brand
+audience: ""
+tone: "conversational, confident, no hype words"
+topics: []
+avoid: []
+example_posts: []

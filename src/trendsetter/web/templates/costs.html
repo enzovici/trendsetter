@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title %}Costs — Trendsetter{% endblock %}
+{% block content %}
+<h1>Costs — {{ month }} <span class="badge {{ state }}">{{ state.replace('_', ' ') }}</span></h1>
+
+<div class="cards">
+  <div class="card">
+    <div class="muted">Month to date</div>
+    <div class="value">${{ '%.4f' % total }}</div>
+    <div class="bar"><div class="{{ state }}" style="width: {{ '%.1f' % spend_pct }}%"></div></div>
+    <div class="muted">cap ${{ '%.2f' % cap }} &middot; soft cap ${{ '%.2f' % soft_cap_usd }}</div>
+  </div>
+  <div class="card">
+    <div class="muted">Projected month burn</div>
+    <div class="value">${{ '%.2f' % projection }}</div>
+    <div class="bar"><div style="width: {{ '%.1f' % projection_pct }}%"></div></div>
+    <div class="muted">at current daily rate</div>
+  </div>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>Provider</th>
+      <th class="num">Calls</th>
+      <th class="num">Spend (USD)</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for p in providers %}
+    <tr>
+      <td>{{ p.provider }}</td>
+      <td class="num">{{ p.calls }}</td>
+      <td class="num">${{ '%.4f' % p.usd }}</td>
+    </tr>
+    {% else %}
+    <tr><td colspan="3" class="muted">No provider calls this month.</td></tr>
+    {% endfor %}
+    {% if providers %}
+    <tr>
+      <td><strong>Total</strong></td>
+      <td class="num"><strong>{{ providers | sum(attribute='calls') }}</strong></td>
+      <td class="num"><strong>${{ '%.4f' % total }}</strong></td>
+    </tr>
+    {% endif %}
+  </tbody>
+</table>
+{% endblock %}

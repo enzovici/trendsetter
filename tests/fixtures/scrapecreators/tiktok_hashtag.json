@@ -1,0 +1,51 @@
+{
+  "posts": [
+    {
+      "id": "7301111111111111111",
+      "desc": "Leg day never lies #fitness #gym",
+      "author": {"id": "6801111111111111111", "unique_id": "liftlaura"},
+      "stats": {
+        "play_count": 1250000,
+        "digg_count": 98000,
+        "comment_count": 1200,
+        "share_count": 4300
+      },
+      "challenges": [{"name": "Fitness"}, {"name": "gym"}],
+      "music": {"id": "7250000000000000001", "title": "original sound - liftlaura"},
+      "create_time": 1752950400,
+      "share_url": "https://www.tiktok.com/@liftlaura/video/7301111111111111111"
+    },
+    {
+      "id": "7302222222222222222",
+      "desc": "30 day shred update #fitness #shred",
+      "author": {"id": "6802222222222222222", "unique_id": "coachmarco"},
+      "stats": {
+        "play_count": 480000,
+        "digg_count": 35000,
+        "comment_count": 640,
+        "share_count": 900
+      },
+      "challenges": [{"name": "fitness"}, {"name": "shred"}],
+      "music": {"id": "7250000000000000002", "title": "Gym Phonk"},
+      "create_time": 1752954000,
+      "share_url": "https://www.tiktok.com/@coachmarco/video/7302222222222222222"
+    },
+    {
+      "id": "7303333333333333333",
+      "desc": "what I eat in a day as a lifter #fitness #gym #mealprep",
+      "author": {"id": "6803333333333333333", "unique_id": "gains.gabi"},
+      "stats": {
+        "play_count": 2100000,
+        "digg_count": 190000,
+        "comment_count": 3100,
+        "share_count": 8800
+      },
+      "challenges": [{"name": "fitness"}, {"name": "gym"}, {"name": "MealPrep"}],
+      "music": {"id": "7250000000000000003", "title": "trending audio"},
+      "create_time": 1752957600,
+      "share_url": "https://www.tiktok.com/@gains.gabi/video/7303333333333333333"
+    }
+  ],
+  "cursor": "abc",
+  "credits_used": 1
+}

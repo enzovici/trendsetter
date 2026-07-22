@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Trendsetter{% endblock %}</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      --bg: #f6f7f9;
+      --panel: #ffffff;
+      --text: #1a1d21;
+      --muted: #6b7280;
+      --border: #e2e5ea;
+      --accent: #4f7cff;
+      --ok: #1f9d55;
+      --warn: #d97706;
+      --danger: #dc2626;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #101216;
+        --panel: #181b21;
+        --text: #e7e9ee;
+        --muted: #9aa1ad;
+        --border: #2a2f38;
+      }
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      padding: 0.75rem 1.5rem;
+      background: var(--panel);
+      border-bottom: 1px solid var(--border);
+    }
+    nav .brand { font-weight: 700; }
+    nav a { color: var(--muted); text-decoration: none; }
+    nav a:hover { color: var(--text); }
+    nav .spacer { flex: 1; }
+    main { max-width: 60rem; margin: 2rem auto; padding: 0 1.5rem; }
+    h1 { font-size: 1.4rem; }
+    .muted { color: var(--muted); }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    th, td {
+      padding: 0.6rem 0.9rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+    th {
+      color: var(--muted);
+      font-weight: 600;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+    tr:last-child td { border-bottom: none; }
+    th.num, td.num { text-align: right; font-variant-numeric: tabular-nums; }
+    .cards { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+    .card {
+      flex: 1 1 14rem;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1rem;
+    }
+    .card .value { font-size: 1.5rem; font-weight: 700; margin: 0.2rem 0; }
+    .bar {
+      height: 0.55rem;
+      background: var(--border);
+      border-radius: 999px;
+      overflow: hidden;
+      margin: 0.5rem 0 0.4rem;
+    }
+    .bar > div { height: 100%; background: var(--accent); border-radius: 999px; }
+    .bar > div.soft_exceeded { background: var(--warn); }
+    .bar > div.hard_exceeded { background: var(--danger); }
+    .badge {
+      display: inline-block;
+      padding: 0.15rem 0.65rem;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #fff;
+      vertical-align: middle;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+    .badge.ok { background: var(--ok); }
+    .badge.soft_exceeded { background: var(--warn); }
+    .badge.hard_exceeded { background: var(--danger); }
+    .login { display: flex; justify-content: center; margin-top: 14vh; padding: 0 1rem; }
+    .login form {
+      width: 20rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 2rem;
+    }
+    .login h1 { margin: 0 0 0.5rem; text-align: center; }
+    .login input {
+      padding: 0.55rem 0.7rem;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      background: var(--bg);
+      color: var(--text);
+      font: inherit;
+    }
+    .login button {
+      padding: 0.55rem;
+      border: none;
+      border-radius: 6px;
+      background: var(--accent);
+      color: #fff;
+      font: inherit;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .login .error { color: var(--danger); margin: 0; text-align: center; }
+  </style>
+</head>
+<body>
+  {% block nav %}
+  <nav>
+    <span class="brand">Trendsetter</span>
+    <a href="/costs">Costs</a>
+    <span class="spacer"></span>
+    <a href="/logout">Log out</a>
+  </nav>
+  {% endblock %}
+  <main>{% block content %}{% endblock %}</main>
+</body>
+</html>
