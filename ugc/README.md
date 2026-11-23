@@ -89,7 +89,7 @@ Then open http://localhost:8000. Run `git pull` first to get Camila's latest cha
 
 Everything below is placeholder content.
 
-- [ ] `hello@camila.milanoprive.com`: create this mailbox, or replace the address everywhere (`index.html` hero, contact and JSON-LD in `<head>`)
+- [x] Contact email `camila@milanoprive.com` forwards to Camila's Gmail (Namecheap › milanoprive.com › Domain › Redirect Email). It is in `index.html` in three places: hero, contact and JSON-LD in `<head>`. Namecheap forwarding only works for `@milanoprive.com` addresses, not for the `camila.` subdomain.
 - [ ] In Pages CMS: 3 hero photos (light and soft: the name sits on them in dark ink), intro video + poster, About photo, Why me photo
 - [ ] In Pages CMS: replace the 12 placeholder videos and the 8 placeholder photos
 - [ ] Both case studies: the concepts, kits, numbers and AI note are invented examples. Replace them with real projects.
