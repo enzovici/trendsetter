@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1500" width="1200" height="1500">
+  <defs><linearGradient id="g" x1="0" y1="0" x2="0.3" y2="1"><stop offset="0" stop-color="#F4C7B5"/><stop offset="1" stop-color="#F9D8CA"/></linearGradient></defs>
+  <rect width="1200" height="1500" fill="url(#g)"/>
+  <text x="50%" y="1350" text-anchor="middle" fill="#6B4A40" font-family="Helvetica, Arial, sans-serif" font-size="36" letter-spacing="3">BLOOM: SELECTED VISUAL 2</text>
+  <text x="50%" y="1407.6" text-anchor="middle" fill="#6B4A40" opacity="0.7" font-family="Helvetica, Arial, sans-serif" font-size="25" letter-spacing="2">PLACEHOLDER 1200×1500</text>
+</svg>

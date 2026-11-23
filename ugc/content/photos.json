@@ -1,0 +1,50 @@
+[
+  {
+    "image": "assets/placeholders/photo-01.svg",
+    "alt_en": "Flat-lay of a product with flowers",
+    "alt_ru": "Флэтлей с продуктом и цветами",
+    "alt_it": "Flat lay con prodotto e fiori"
+  },
+  {
+    "image": "assets/placeholders/photo-02.svg",
+    "alt_en": "Product on a linen cloth",
+    "alt_ru": "Продукт на льняной ткани",
+    "alt_it": "Prodotto su un tessuto di lino"
+  },
+  {
+    "image": "assets/placeholders/photo-03.svg",
+    "alt_en": "Cat sniffing a product",
+    "alt_ru": "Кошка обнюхивает продукт",
+    "alt_it": "La gatta annusa il prodotto"
+  },
+  {
+    "image": "assets/placeholders/photo-04.svg",
+    "alt_en": "Close-up detail of packaging",
+    "alt_ru": "Крупный план упаковки",
+    "alt_it": "Dettaglio della confezione"
+  },
+  {
+    "image": "assets/placeholders/photo-05.svg",
+    "alt_en": "Morning skincare routine by a window",
+    "alt_ru": "Утренний уход у окна",
+    "alt_it": "Routine del mattino alla finestra"
+  },
+  {
+    "image": "assets/placeholders/photo-06.svg",
+    "alt_en": "Still life of a bouquet and a candle",
+    "alt_ru": "Натюрморт с букетом и свечой",
+    "alt_it": "Still life con bouquet e candela"
+  },
+  {
+    "image": "assets/placeholders/photo-07.svg",
+    "alt_en": "Mirror selfie holding a product",
+    "alt_ru": "Селфи в зеркале с продуктом",
+    "alt_it": "Selfie allo specchio con il prodotto"
+  },
+  {
+    "image": "assets/placeholders/photo-08.svg",
+    "alt_en": "Texture close-up of a cream",
+    "alt_ru": "Крупный план текстуры крема",
+    "alt_it": "Primo piano della texture della crema"
+  }
+]

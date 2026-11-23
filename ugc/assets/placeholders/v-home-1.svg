@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1560" width="1080" height="1560">
+  <defs><linearGradient id="g" x1="0" y1="0" x2="0.3" y2="1"><stop offset="0" stop-color="#F4C7B5"/><stop offset="1" stop-color="#F4C7B5"/></linearGradient></defs>
+  <rect width="1080" height="1560" fill="url(#g)"/>
+  <text x="50%" y="1404" text-anchor="middle" fill="#6B4A40" font-family="Helvetica, Arial, sans-serif" font-size="32" letter-spacing="3">HOME VIDEO 1 POSTER</text>
+  <text x="50%" y="1455.2" text-anchor="middle" fill="#6B4A40" opacity="0.7" font-family="Helvetica, Arial, sans-serif" font-size="22" letter-spacing="2">PLACEHOLDER 1080×1560</text>
+</svg>

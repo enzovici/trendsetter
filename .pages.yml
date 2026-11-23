@@ -1,0 +1,237 @@
+# Pages CMS config (https://pagescms.org). Camila edits these files at app.pagescms.org.
+# The site lives in ugc/. Every save is a commit; .github/workflows/deploy-ugc.yml
+# then runs ugc/build.py and deploys ugc/ to the VPS.
+
+media:
+  - name: images
+    label: Photos
+    input: ugc/assets/uploads/images
+    output: /assets/uploads/images
+    categories: [image]
+  - name: videos
+    label: Videos
+    input: ugc/assets/uploads/videos
+    output: /assets/uploads/videos
+    extensions: [mp4]
+
+content:
+  - name: videos
+    label: UGC videos
+    type: file
+    path: ugc/content/videos.json
+    format: json
+    list: true
+    fields:
+      - name: category
+        label: Category
+        type: select
+        required: true
+        options:
+          values:
+            - { name: beauty, label: Beauty }
+            - { name: pets, label: Pets }
+            - { name: home, label: Home & Flowers }
+      - name: video
+        label: Video (MP4, 1080×1920, under 5 MB)
+        type: file
+        required: true
+        options: { media: videos, extensions: [mp4] }
+      - name: poster
+        label: Poster (still from the video, 1080×1560)
+        type: image
+        required: true
+        options: { media: images }
+      - name: brand
+        label: Brand
+        type: string
+        required: true
+      - name: format
+        label: Ad format
+        type: select
+        required: true
+        options:
+          values:
+            - { name: organic, label: Organic style }
+            - { name: organicText, label: Organic style with text }
+            - { name: testimonial, label: Ad style testimonial }
+            - { name: voiceover, label: Ad style voiceover }
+      - name: client
+        label: Paid client project
+        description: Leave off for concept and spec work. The card then says "Concept for".
+        type: boolean
+      - name: alt_en
+        label: What happens in the video (English)
+        description: Short, lowercase, e.g. "morning lip routine". The page adds "Play:" and the brand.
+        type: string
+        required: true
+      - name: alt_ru
+        label: Same in Russian (optional)
+        type: string
+      - name: alt_it
+        label: Same in Italian (optional)
+        type: string
+
+  - name: photos
+    label: UGC photos
+    type: file
+    path: ugc/content/photos.json
+    format: json
+    list: true
+    fields:
+      - name: image
+        label: Photo (4:5, about 1200×1500, under 300 KB)
+        type: image
+        required: true
+        options: { media: images }
+      - name: alt_en
+        label: Description (English)
+        description: What is in the photo, for screen readers and Google.
+        type: string
+        required: true
+      - name: alt_ru
+        label: Description (Russian, optional)
+        type: string
+      - name: alt_it
+        label: Description (Italian, optional)
+        type: string
+
+  - name: media
+    label: Hero, About and Why me photos
+    type: file
+    path: ugc/content/media.json
+    format: json
+    fields:
+      - name: hero
+        label: Hero photos (3, light and soft, 4:5)
+        type: object
+        list: { min: 3, max: 3 }
+        fields:
+          - name: image
+            label: Photo (4:5, about 1200×1500, under 300 KB)
+            type: image
+            required: true
+            options: { media: images }
+          - name: alt_en
+            label: Description (English)
+            description: What is in the photo, for screen readers and Google.
+            type: string
+            required: true
+          - name: alt_ru
+            label: Description (Russian, optional)
+            type: string
+          - name: alt_it
+            label: Description (Italian, optional)
+            type: string
+      - name: intro
+        label: Intro video (About)
+        type: object
+        fields:
+          - name: video
+            label: Video (MP4)
+            type: file
+            required: true
+            options: { media: videos, extensions: [mp4] }
+          - name: poster
+            label: Poster (9:16)
+            type: image
+            required: true
+            options: { media: images }
+          - name: alt_en
+            label: Description (English)
+            type: string
+            required: true
+          - name: alt_ru
+            label: Description (Russian, optional)
+            type: string
+          - name: alt_it
+            label: Description (Italian, optional)
+            type: string
+      - name: about_photo
+        label: About photo (9:16)
+        type: object
+        fields:
+          - name: image
+            label: Photo (4:5, about 1200×1500, under 300 KB)
+            type: image
+            required: true
+            options: { media: images }
+          - name: alt_en
+            label: Description (English)
+            description: What is in the photo, for screen readers and Google.
+            type: string
+            required: true
+          - name: alt_ru
+            label: Description (Russian, optional)
+            type: string
+          - name: alt_it
+            label: Description (Italian, optional)
+            type: string
+      - name: why_photo
+        label: Why me photo (4:5)
+        type: object
+        fields:
+          - name: image
+            label: Photo (4:5, about 1200×1500, under 300 KB)
+            type: image
+            required: true
+            options: { media: images }
+          - name: alt_en
+            label: Description (English)
+            description: What is in the photo, for screen readers and Google.
+            type: string
+            required: true
+          - name: alt_ru
+            label: Description (Russian, optional)
+            type: string
+          - name: alt_it
+            label: Description (Italian, optional)
+            type: string
+
+  - name: stats
+    label: Instagram stats
+    type: file
+    path: ugc/stats.json
+    format: json
+    fields:
+      - name: platform
+        label: Platform
+        type: string
+        required: true
+      - name: updated
+        label: Date copied from the dashboard
+        type: date
+        required: true
+      - name: periodDays
+        label: Period (days)
+        type: number
+        required: true
+      - name: views
+        label: Views
+        type: number
+        required: true
+      - name: reach
+        label: Accounts reached (Viewers)
+        type: number
+        required: true
+      - name: interactions
+        label: Interactions (sum of all content types)
+        type: number
+        required: true
+      - name: followers
+        label: Followers
+        type: number
+        required: true
+      - name: languages
+        label: Top audience languages
+        type: object
+        list: { min: 1, max: 3 }
+        fields:
+          - name: code
+            label: Language code (en, ru, it…)
+            type: string
+            required: true
+            options: { minlength: 2, maxlength: 2 }
+          - name: percent
+            label: Percent
+            type: number
+            required: true

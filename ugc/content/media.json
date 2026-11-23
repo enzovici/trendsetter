@@ -1,0 +1,41 @@
+{
+  "hero": [
+    {
+      "image": "assets/placeholders/hero-1.svg",
+      "alt_en": "Fresh flowers beside a skincare product",
+      "alt_ru": "Свежие цветы рядом со средством по уходу",
+      "alt_it": "Fiori freschi accanto a un prodotto skincare"
+    },
+    {
+      "image": "assets/placeholders/hero-2.svg",
+      "alt_en": "Portrait of Camila",
+      "alt_ru": "Портрет Камилы",
+      "alt_it": "Ritratto di Camila"
+    },
+    {
+      "image": "assets/placeholders/hero-3.svg",
+      "alt_en": "Camila's cat next to a beauty product",
+      "alt_ru": "Кошка Камилы рядом с косметикой",
+      "alt_it": "La gatta di Camila accanto a un prodotto beauty"
+    }
+  ],
+  "intro": {
+    "video": "assets/videos/intro.mp4",
+    "poster": "assets/placeholders/intro-poster.svg",
+    "alt_en": "Play Camila's intro video",
+    "alt_ru": "Смотреть видео-знакомство с Камилой",
+    "alt_it": "Guarda il video di presentazione di Camila"
+  },
+  "about_photo": {
+    "image": "assets/placeholders/about-photo.svg",
+    "alt_en": "Camila holding a bunch of flowers",
+    "alt_ru": "Камила с букетом цветов",
+    "alt_it": "Camila con un mazzo di fiori"
+  },
+  "why_photo": {
+    "image": "assets/placeholders/why-photo.svg",
+    "alt_en": "Flat-lay of flowers, a product and Camila's cat",
+    "alt_ru": "Флэтлей с цветами, продуктом и кошкой Камилы",
+    "alt_it": "Flat lay con fiori, un prodotto e la gatta di Camila"
+  }
+}

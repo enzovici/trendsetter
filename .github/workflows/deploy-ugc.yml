@@ -1,0 +1,44 @@
+# Camila's portfolio site (ugc/): builds ugc/index.html from ugc/content/*.json
+# and copies ugc/ to the VPS. Runs on pushes to main that touch ugc/ or this file
+# (each Pages CMS save is a push), and on demand.
+#
+# Repository secrets (Settings > Secrets and variables > Actions):
+#   SSH_PRIVATE_KEY  private key of a deploy-only key pair; its public key is in the VPS user's ~/.ssh/authorized_keys
+#   SSH_KNOWN_HOSTS  output of: ssh-keyscan -t ed25519 YOUR_VPS_IP
+#   DEPLOY_TARGET    user@YOUR_VPS_IP:/var/www/camila/
+name: Deploy UGC site
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'ugc/**'
+      - '.github/workflows/deploy-ugc.yml'
+  workflow_dispatch:
+
+concurrency: deploy-ugc
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ugc
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build index.html
+        run: python3 build.py
+
+      - name: Copy to VPS
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          SSH_KNOWN_HOSTS: ${{ secrets.SSH_KNOWN_HOSTS }}
+          DEPLOY_TARGET: ${{ secrets.DEPLOY_TARGET }}
+        run: |
+          mkdir -p ~/.ssh
+          printf '%s\n' "$SSH_PRIVATE_KEY" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          printf '%s\n' "$SSH_KNOWN_HOSTS" > ~/.ssh/known_hosts
+          rsync -az --delete --exclude-from=.deployignore \
+            -e "ssh -i ~/.ssh/deploy_key" ./ "$DEPLOY_TARGET"

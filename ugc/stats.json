@@ -1,0 +1,23 @@
+{
+  "platform": "Instagram",
+  "updated": "2026-11-23",
+  "periodDays": 30,
+  "views": 165160,
+  "reach": 116221,
+  "interactions": 6074,
+  "followers": 1034,
+  "languages": [
+    {
+      "code": "en",
+      "percent": 54.7
+    },
+    {
+      "code": "ru",
+      "percent": 14.6
+    },
+    {
+      "code": "it",
+      "percent": 9.1
+    }
+  ]
+}

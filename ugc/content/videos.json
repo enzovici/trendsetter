@@ -1,0 +1,134 @@
+[
+  {
+    "category": "beauty",
+    "video": "assets/videos/v-beauty-1.mp4",
+    "poster": "assets/placeholders/v-beauty-1.svg",
+    "brand": "Dior",
+    "format": "organic",
+    "client": false,
+    "alt_en": "morning lip routine",
+    "alt_ru": "утренний уход за губами",
+    "alt_it": "routine labbra del mattino"
+  },
+  {
+    "category": "beauty",
+    "video": "assets/videos/v-beauty-2.mp4",
+    "poster": "assets/placeholders/v-beauty-2.svg",
+    "brand": "KIKO Milano",
+    "format": "organicText",
+    "client": false,
+    "alt_en": "three looks with one palette",
+    "alt_ru": "три образа с одной палеткой",
+    "alt_it": "tre look con una sola palette"
+  },
+  {
+    "category": "beauty",
+    "video": "assets/videos/v-beauty-3.mp4",
+    "poster": "assets/placeholders/v-beauty-3.svg",
+    "brand": "La Roche-Posay",
+    "format": "testimonial",
+    "client": false,
+    "alt_en": "two weeks with a barrier cream",
+    "alt_ru": "две недели с восстанавливающим кремом",
+    "alt_it": "due settimane con una crema riparatrice"
+  },
+  {
+    "category": "beauty",
+    "video": "assets/videos/v-beauty-4.mp4",
+    "poster": "assets/placeholders/v-beauty-4.svg",
+    "brand": "Charlotte Tilbury",
+    "format": "voiceover",
+    "client": false,
+    "alt_en": "a five-minute evening look",
+    "alt_ru": "вечерний образ за пять минут",
+    "alt_it": "look da sera in cinque minuti"
+  },
+  {
+    "category": "pets",
+    "video": "assets/videos/v-pets-1.mp4",
+    "poster": "assets/placeholders/v-pets-1.svg",
+    "brand": "Royal Canin",
+    "format": "organic",
+    "client": false,
+    "alt_en": "breakfast time with the cat",
+    "alt_ru": "завтрак с кошкой",
+    "alt_it": "colazione con la gatta"
+  },
+  {
+    "category": "pets",
+    "video": "assets/videos/v-pets-2.mp4",
+    "poster": "assets/placeholders/v-pets-2.svg",
+    "brand": "Catit",
+    "format": "organicText",
+    "client": false,
+    "alt_en": "setting up a cat fountain in three steps",
+    "alt_ru": "поилка-фонтан для кошки за три шага",
+    "alt_it": "fontanella per gatti in tre passaggi"
+  },
+  {
+    "category": "pets",
+    "video": "assets/videos/v-pets-3.mp4",
+    "poster": "assets/placeholders/v-pets-3.svg",
+    "brand": "Lily's Kitchen",
+    "format": "testimonial",
+    "client": false,
+    "alt_en": "a fussy eater's honest review",
+    "alt_ru": "честный отзыв привередливой кошки",
+    "alt_it": "la recensione sincera di una gatta schizzinosa"
+  },
+  {
+    "category": "pets",
+    "video": "assets/videos/v-pets-4.mp4",
+    "poster": "assets/placeholders/v-pets-4.svg",
+    "brand": "Purina",
+    "format": "voiceover",
+    "client": false,
+    "alt_en": "a day in the life of an indoor cat",
+    "alt_ru": "один день из жизни домашней кошки",
+    "alt_it": "un giorno nella vita di una gatta di casa"
+  },
+  {
+    "category": "home",
+    "video": "assets/videos/v-home-1.mp4",
+    "poster": "assets/placeholders/v-home-1.svg",
+    "brand": "Diptyque",
+    "format": "organic",
+    "client": false,
+    "alt_en": "lighting a candle as the peonies open",
+    "alt_ru": "свеча зажигается, пока раскрываются пионы",
+    "alt_it": "una candela si accende mentre le peonie si aprono"
+  },
+  {
+    "category": "home",
+    "video": "assets/videos/v-home-2.mp4",
+    "poster": "assets/placeholders/v-home-2.svg",
+    "brand": "Zara Home",
+    "format": "organicText",
+    "client": false,
+    "alt_en": "a spring table in five pieces",
+    "alt_ru": "весенний стол из пяти предметов",
+    "alt_it": "una tavola primaverile con cinque pezzi"
+  },
+  {
+    "category": "home",
+    "video": "assets/videos/v-home-3.mp4",
+    "poster": "assets/placeholders/v-home-3.svg",
+    "brand": "Rituals",
+    "format": "testimonial",
+    "client": false,
+    "alt_en": "a month with a home fragrance diffuser",
+    "alt_ru": "месяц с ароматическим диффузором",
+    "alt_it": "un mese con un diffusore di fragranze"
+  },
+  {
+    "category": "home",
+    "video": "assets/videos/v-home-4.mp4",
+    "poster": "assets/placeholders/v-home-4.svg",
+    "brand": "Bloom & Wild",
+    "format": "voiceover",
+    "client": false,
+    "alt_en": "unboxing a letterbox bouquet",
+    "alt_ru": "распаковка букета в почтовой коробке",
+    "alt_it": "unboxing di un bouquet spedito per posta"
+  }
+]
