@@ -30,7 +30,7 @@ favicon.ico  site.webmanifest  robots.txt  sitemap.xml
 Camila ──► app.pagescms.org ──► commit to enzovici/trendsetter (ugc/content/*.json, ugc/stats.json, ugc/assets/uploads/)
                                         │
                                         ▼
-                         GitHub Action: python3 build.py in ugc/ ──► rsync ugc/ ──► VPS (nginx)
+                         GitHub Action: python3 build.py in ugc/ ──► rsync ugc/ ──► cerebrus VPS (Caddy)
 ```
 
 ```
@@ -61,17 +61,13 @@ Texts, case studies, headings and translations of the fixed text are not in the 
 ## One-time setup
 
 1. **GitHub.** The site lives in `ugc/` of `enzovici/trendsetter`, which is a **public** repository: anyone can see the site files and Camila's uploads (they are public on the website anyway). Pushing a change under `ugc/` to `main` deploys it. Changes to the Python app do not trigger a deploy.
-2. **Deploy key.** On your computer:
-   ```bash
-   ssh-keygen -t ed25519 -N "" -f camila_deploy -C "camila-site deploy"
-   ```
-   Add `camila_deploy.pub` to `~/.ssh/authorized_keys` of the VPS user that owns `/var/www/camila/`.
-3. **Repository secrets** (GitHub › Settings › Secrets and variables › Actions):
-   - `SSH_PRIVATE_KEY`: contents of `camila_deploy`
-   - `SSH_KNOWN_HOSTS`: output of `ssh-keyscan -t ed25519 YOUR_VPS_IP`
-   - `DEPLOY_TARGET`: `user@YOUR_VPS_IP:/var/www/camila/`
+2. **Deploy key** (done 2026-11-23). An ed25519 key pair for the server user `camila-deploy`; see [Hosting](#hosting). The private key exists only in the GitHub secret below. To rotate it, generate a new pair, replace the public key in `/home/camila-deploy/.ssh/authorized_keys` on the server (keep the `command="/usr/bin/rrsync /var/www/camila",restrict` prefix), and update the secret.
+3. **Repository secrets** (done; GitHub › Settings › Secrets and variables › Actions):
+   - `SSH_PRIVATE_KEY`: the deploy private key
+   - `SSH_KNOWN_HOSTS`: output of `ssh-keyscan -t ed25519 83.228.205.131`
+   - `DEPLOY_TARGET`: `camila-deploy@83.228.205.131:./` (`./` is `/var/www/camila`, because rrsync anchors paths there)
 
-   Never commit the private key: the repository is public. Delete the local `camila_deploy` file after adding the secret. Run the workflow once by hand (Actions › Deploy UGC site › Run workflow) to check it.
+   Never commit a private key: the repository is public. To check the deploy, run the workflow by hand (Actions › Deploy UGC site › Run workflow).
 4. **Pages CMS.** Sign in at https://app.pagescms.org with GitHub, install the Pages CMS GitHub App on `enzovici/trendsetter` only, open the repository. Camila's forms only show the files listed in `/.pages.yml`.
 5. **Invite Camila** in Pages CMS (Collaborators, by email). She does not need a GitHub account.
 
@@ -148,7 +144,7 @@ ffmpeg -i input.mov -vf scale=1080:1920 -c:v libx264 -crf 23 -preset slow -c:a a
 ffmpeg -ss 0.5 -i video.mp4 -frames:v 1 -q:v 3 poster.jpg
 ```
 
-**Replacing a file.** Upload a new file with a new name instead of overwriting the old one. nginx tells browsers to cache images and videos for a year, so a file replaced under the same name may keep showing the old version.
+**Replacing a file.** Upload a new file with a new name instead of overwriting the old one. The server tells browsers to cache images and videos for a year, so a file replaced under the same name may keep showing the old version.
 
 Videos never load on page load. Each card shows its poster. The video starts downloading only when the visitor hovers (desktop) or taps (phone).
 
@@ -180,14 +176,26 @@ Only English is indexed by search engines; the other languages appear when a vis
 
 **Fonts.** Headings use Bricolage Grotesque, which has no Cyrillic. In Russian, `styles.css` switches headings to Onest. Body text is Inter, which covers both. Italian uses Bricolage as it is.
 
-## Deploying
+## Hosting
 
-Normally the GitHub Action deploys on every push to `main`. To deploy by hand from your computer, in the `ugc/` folder:
-
-```bash
-python3 build.py && rsync -avz --delete --exclude-from=.deployignore ./ user@YOUR_VPS_IP:/var/www/camila/
+```
+camila.milanoprive.com ──DNS A (Namecheap)──► 83.228.205.131 (cerebrus, Infomaniak)
+                                               Caddy ──► /var/www/camila
 ```
 
-nginx serves the files as they are. No restart is needed. `index.html` is sent with `no-cache`; other assets are cached for a year.
+- **DNS.** A record `camila` → `83.228.205.131` in Namecheap › milanoprive.com › Advanced DNS.
+- **Web server.** Caddy, not nginx. The site block `camila.milanoprive.com { … }` is in `/etc/caddy/Caddyfile` on cerebrus, next to other sites. Caddy gets and renews the HTTPS certificate itself. After editing the Caddyfile: back it up, run `sudo caddy validate --config /etc/caddy/Caddyfile --adapter caddyfile`, then `sudo systemctl reload caddy`.
+- **Caching.** `/assets/*` is cached for a year. HTML, CSS, JS and `stats.json` are sent with `no-cache`, so browsers recheck them on every visit and changes show at once.
+- **Security headers.** The Content-Security-Policy allows the inline `<script>` in `<head>` (the one that sets `class="js"`) by its sha256 hash. If you change that line, update the hash in the Caddyfile, or the script is blocked. Fonts may only come from Google Fonts. Adding any other external script, font or embed also needs a CSP change.
+- **Deploy user.** `camila-deploy` has no password and no sudo. Its key may only run `rrsync` into `/var/www/camila`: no shell, no port forwarding, no paths outside that folder. It is listed in `AllowUsers` in `/etc/ssh/sshd_config.d/50-cerebrus.conf`.
+- **No access log**, like the other marketing site on the server.
 
-DNS, nginx and HTTPS setup are in Part 2 of the original build brief.
+## Deploying
+
+Normally the GitHub Action deploys on every push to `main` that touches `ugc/`. To deploy by hand from your computer (as the `ubuntu` admin user, writing as `camila-deploy` so file ownership stays the same), in the `ugc/` folder:
+
+```bash
+python3 build.py && rsync -avz --delete --exclude-from=.deployignore --rsync-path="sudo -u camila-deploy rsync" ./ cerebrus:/var/www/camila/
+```
+
+`cerebrus` is the SSH host alias in `~/.ssh/config`. No server restart is needed after a deploy.

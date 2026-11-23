@@ -3,9 +3,9 @@
 # (each Pages CMS save is a push), and on demand.
 #
 # Repository secrets (Settings > Secrets and variables > Actions):
-#   SSH_PRIVATE_KEY  private key of a deploy-only key pair; its public key is in the VPS user's ~/.ssh/authorized_keys
-#   SSH_KNOWN_HOSTS  output of: ssh-keyscan -t ed25519 YOUR_VPS_IP
-#   DEPLOY_TARGET    user@YOUR_VPS_IP:/var/www/camila/
+#   SSH_PRIVATE_KEY  private key of camila-deploy on cerebrus (rrsync-only into /var/www/camila)
+#   SSH_KNOWN_HOSTS  output of: ssh-keyscan -t ed25519 83.228.205.131
+#   DEPLOY_TARGET    camila-deploy@83.228.205.131:./   (rrsync anchors ./ at /var/www/camila)
 name: Deploy UGC site
 
 on:
